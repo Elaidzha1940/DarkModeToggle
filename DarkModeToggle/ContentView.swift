@@ -28,7 +28,7 @@ struct ContentView: View {
         }
         .background(.white)
         .frame(width: 290, height: 250)
-        .cornerRadius(20)
+        .cornerRadius(50)
         .shadow(
             color: .black.opacity(0.5),
             radius: 10,
@@ -44,6 +44,18 @@ struct ContentView: View {
 struct CustomToggleStyle: ToggleStyle {
     func makeBody(configuration: Configuration) -> some View {
         ZStack {
+            RoundedRectangle(cornerRadius: 20, style: .continuous)
+                .frame(width: 200, height: 40)
+            
+            RoundedRectangle(cornerRadius: 20, style: .continuous)
+                .foregroundColor(.white)
+                .frame(width: 100, height: 42)
+                .offset(x: -50)
+                .shadow(
+                    color: .black.opacity(0.5),
+                    radius: 10,
+                    x: 10,
+                    y: 10)
             
         }
     }
