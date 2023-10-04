@@ -50,13 +50,34 @@ struct CustomToggleStyle: ToggleStyle {
             RoundedRectangle(cornerRadius: 20, style: .continuous)
                 .foregroundColor(.white)
                 .frame(width: 100, height: 42)
-                .offset(x: -50)
+                .offset(x: configuration.isOn ? 50 : -50)
                 .shadow(
                     color: .black.opacity(0.5),
                     radius: 10,
                     x: 10,
                     y: 10)
             
+            HStack {
+                Text("Light")
+                    .font(
+                        .system(size: 20,
+                                weight: .bold,
+                                design: .rounded))
+                Spacer()
+                
+                Text("Dark")
+                    .font(
+                        .system(size: 20,
+                                weight: .bold,
+                                design: .rounded))
+                    .foregroundStyle(.white)
+            }
+            .frame(width: 135)
+            .onTapGesture {
+                withAnimation(.easeInOut(duration: 0.2)) {
+                    configuration.isOn.toggle()
+                }
+            }
         }
     }
 }
