@@ -35,9 +35,7 @@ struct ContentView: View {
                     .frame(width: 140, height: 140)
                     .overlay(alignment: .topTrailing) {
                         if !isDarkMode{
-                            //                        Circle()
-                            //                            .frame(width: 20, height: 20)
-                            //                            .offset(x: 10, y: 15)
+                            
                         } else {
                             Circle()
                                 .foregroundStyle(Color("BD"))
