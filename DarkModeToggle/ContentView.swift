@@ -21,16 +21,38 @@ struct ContentView: View {
             }
             .padding(.horizontal, 25)
             .padding(.vertical, 15)
+            
             Circle()
+                .foregroundStyle(
+                isDarkMode
+                ? Color.white
+                : Color(Color("OR"))
+                )
+                .frame(width: 140, height: 140)
+                .overlay(alignment: .topTrailing) {
+                    if !isDarkMode{
+//                        Circle()
+//                            .frame(width: 20, height: 20)
+//                            .offset(x: 10, y: 15)
+                    } else {
+                        Circle()
+                            .foregroundStyle(Color("Dark"))
+                            .frame(width: 105, height: 105)
+                            .offset(x: 10, y: 15)
+                    }
+                }
+            
+            
             Toggle("", isOn: $isDarkMode)
                 .toggleStyle(CustomToggleStyle())
                 .padding()
         }
+        .preferredColorScheme(.dark)
         .background(isDarkMode ? Color("Dark") : Color("Light"))
+        .cornerRadius(20)
         .frame(width: 290, height: 250)
-        .cornerRadius(50)
         .shadow(
-            color: .black.opacity(0.5),
+            color: .black.opacity(0.2),
             radius: 10,
             x: 10,
             y: 10)
@@ -48,11 +70,11 @@ struct CustomToggleStyle: ToggleStyle {
                 .frame(width: 200, height: 40)
             
             RoundedRectangle(cornerRadius: 20, style: .continuous)
-                .foregroundColor(configuration.isOn ? Color("Dark") : Color("Light"))
+                .foregroundColor(configuration.isOn ? Color("BD") : Color("Light"))
                 .frame(width: 100, height: 42)
                 .offset(x: configuration.isOn ? 50 : -50)
                 .shadow(
-                    color: .black.opacity(0.5),
+                    color: .black.opacity(0.4),
                     radius: 10,
                     x: 10,
                     y: 10)
@@ -72,7 +94,7 @@ struct CustomToggleStyle: ToggleStyle {
                         .system(size: 20,
                                 weight: .bold,
                                 design: .rounded))
-                    .foregroundStyle(configuration.isOn ? .black : .gray)
+                    .foregroundStyle(configuration.isOn ? .white : .gray)
             }
             .frame(width: 135)
             .onTapGesture {
