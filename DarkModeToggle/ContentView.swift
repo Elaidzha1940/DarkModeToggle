@@ -26,7 +26,7 @@ struct ContentView: View {
                 .toggleStyle(CustomToggleStyle())
                 .padding()
         }
-        .background(.white)
+        .background(isDarkMode ? Color("Dark") : Color("Light"))
         .frame(width: 290, height: 250)
         .cornerRadius(50)
         .shadow(
@@ -48,7 +48,7 @@ struct CustomToggleStyle: ToggleStyle {
                 .frame(width: 200, height: 40)
             
             RoundedRectangle(cornerRadius: 20, style: .continuous)
-                .foregroundColor(.white)
+                .foregroundColor(configuration.isOn ? Color("Dark") : Color("Light"))
                 .frame(width: 100, height: 42)
                 .offset(x: configuration.isOn ? 50 : -50)
                 .shadow(
@@ -63,6 +63,8 @@ struct CustomToggleStyle: ToggleStyle {
                         .system(size: 20,
                                 weight: .bold,
                                 design: .rounded))
+                    .foregroundStyle(configuration.isOn ? .gray : .black)
+
                 Spacer()
                 
                 Text("Dark")
@@ -70,7 +72,7 @@ struct CustomToggleStyle: ToggleStyle {
                         .system(size: 20,
                                 weight: .bold,
                                 design: .rounded))
-                    .foregroundStyle(.white)
+                    .foregroundStyle(configuration.isOn ? .black : .gray)
             }
             .frame(width: 135)
             .onTapGesture {
